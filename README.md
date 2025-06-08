@@ -1,4 +1,4 @@
-# Customer Support Analyzer API
+# Customer Support Analyzer
 
 **It uses a Retrieval-Augmented Generation (RAG) architecture to answer questions based on a knowledge base of historical support tickets.
 
@@ -14,14 +14,14 @@
 
 The system follows a classic two-phase RAG pipeline:
 
-### 1. Indexing (Offline)
+### 1. Indexing
 
-1. Load historical support tickets from a JSON file.
+1. Fetch real time support tickets from platforms like zendesk/JIRA.
 2. Split each ticket into text chunks.
 3. Generate vector embeddings for each chunk using `all-MiniLM-L6-v2`.
 4. Store the chunks and their embeddings in a ChromaDB collection.
 
-### 2. Retrieval & Generation (Online)
+### 2. Retrieval & Generation
 
 1. User sends a natural language query to the FastAPI endpoint.
 2. The system converts the query into an embedding.
