@@ -31,7 +31,7 @@ The system follows a classic two-phase RAG pipeline:
 4. Assemble the retrieved context with the original query and pass it to the Google Gemini Pro model.
 5. Receive and return a concise, natural language answer.
 
-```markdown
+
 ![Architecture Diagram](docs/architecture.png)
-```
+
 
