@@ -21,8 +21,6 @@ The system follows a classic two-phase RAG pipeline:
 3. Generate vector embeddings for each chunk using `all-MiniLM-L6-v2`.
 4. Store the chunks and their embeddings in a ChromaDB collection.
 
-> This process runs automatically on the first application start.
-
 ### 2. Retrieval & Generation (Online)
 
 1. User sends a natural language query to the FastAPI endpoint.
@@ -32,6 +30,6 @@ The system follows a classic two-phase RAG pipeline:
 5. Receive and return a concise, natural language answer.
 
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](backend/docs/architecture.png)
 
 
