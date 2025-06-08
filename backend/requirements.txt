@@ -5,3 +5,4 @@ google-generativeai
 chromadb
 pandas
 transformers
+requests
