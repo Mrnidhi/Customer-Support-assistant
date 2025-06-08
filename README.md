@@ -8,7 +8,7 @@
 * **Frontend Frameworks**: NextJS, ReactJS
 * **Vector Database**: ChromaDB
 * **Embedding Model**: all-MiniLM-L6-v2 (via Sentence Transformers)
-* **LLM for Generation**: Google Gemini Pro
+* **LLM for Generation**: gemini-1.5-flash-latest
 * **Configuration**: python-dotenv
 
 ## Architecture
