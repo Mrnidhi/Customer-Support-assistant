@@ -4,12 +4,11 @@ from pydantic import BaseModel
 from typing import List
 from .rag_query import resolve_query
 
-app = FastAPI(title="Support Q&A API")
+app = FastAPI(title="SupportAI Knowledge Base API")
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend URL
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -3,6 +3,5 @@ uvicorn
 python-dotenv
 google-generativeai
 chromadb
-pandas
-transformers
+sentence-transformers
 requests
