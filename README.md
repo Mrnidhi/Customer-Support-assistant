@@ -74,11 +74,11 @@ graph TB
     
     Tickets --> Embeddings
     
-    classDef frontend fill:#e1f5fe
-    classDef api fill:#f3e5f5
-    classDef rag fill:#e8f5e8
-    classDef data fill:#fff3e0
-    classDef ai fill:#fce4ec
+    classDef frontend fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
+    classDef api fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#ffffff
+    classDef rag fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff
+    classDef data fill:#ea580c,stroke:#c2410c,stroke-width:2px,color:#ffffff
+    classDef ai fill:#7c3aed,stroke:#6d28d9,stroke-width:2px,color:#ffffff
     
     class UI,Search,Results frontend
     class API,CORS api

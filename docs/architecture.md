@@ -43,6 +43,18 @@ graph LR
     RAG --> LLM
     Embeddings --> ChromaDB
     Files --> ChromaDB
+    
+    classDef client fill:#3b82f6,stroke:#2563eb,stroke-width:2px,color:#ffffff
+    classDef frontend fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    classDef backend fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#ffffff
+    classDef ai fill:#8b5cf6,stroke:#7c3aed,stroke-width:2px,color:#ffffff
+    classDef storage fill:#ef4444,stroke:#dc2626,stroke-width:2px,color:#ffffff
+    
+    class User,Browser client
+    class NextJS,React frontend
+    class FastAPI,RAG backend
+    class Embeddings,LLM ai
+    class ChromaDB,Files storage
 ```
 
 ### Data Flow Architecture
@@ -57,17 +69,40 @@ sequenceDiagram
     participant C as ChromaDB
     participant G as Gemini AI
     
+    Note over U,G: SupportAI Query Processing Flow
+    
     U->>F: Enter Query
+    Note right of U: User types question<br/>about support tickets
+    
     F->>A: POST /answer
+    Note right of F: Send query to<br/>backend API
+    
     A->>R: Process Query
+    Note right of A: Initialize RAG<br/>pipeline processing
+    
     R->>E: Generate Query Embedding
+    Note right of R: Convert query to<br/>vector representation
+    
     E->>C: Search Similar Vectors
+    Note right of E: Find most relevant<br/>ticket embeddings
+    
     C-->>R: Return Relevant Tickets
+    Note left of C: Top-K matching<br/>tickets with scores
+    
     R->>G: Generate Answer with Context
+    Note right of R: Build prompt with<br/>retrieved ticket context
+    
     G-->>R: Return AI Response
+    Note left of G: Natural language<br/>answer generated
+    
     R-->>A: Return Answer + Sources
+    Note left of R: Structured response<br/>with source citations
+    
     A-->>F: JSON Response
+    Note left of A: API response with<br/>answer and metadata
+    
     F-->>U: Display Results
+    Note left of F: Show answer and<br/>source tickets to user
 ```
 
 ### Component Architecture
@@ -106,6 +141,14 @@ graph TB
     RAG --> Data
     Embed --> Transformers
     RAG --> Gemini
+    
+    classDef frontend fill:#3b82f6,stroke:#2563eb,stroke-width:2px,color:#ffffff
+    classDef backend fill:#059669,stroke:#047857,stroke-width:2px,color:#ffffff
+    classDef external fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#ffffff
+    
+    class Pages,Components,Context,Hooks frontend
+    class API,Config,RAG,Chroma,Embed,Data backend
+    class Gemini,Transformers external
 ```
 
 ## RAG Pipeline Details
