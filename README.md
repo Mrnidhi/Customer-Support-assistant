@@ -17,6 +17,76 @@ The system uses a RAG (Retrieval-Augmented Generation) pipeline:
 2. **Query**: User questions are matched against stored embeddings to find relevant tickets
 3. **Generation**: Google Gemini AI generates answers based on relevant ticket context
 
+### System Architecture Diagram
+
+```mermaid
+graph TB
+    subgraph "Frontend Layer"
+        UI[Next.js React UI]
+        Search[Search Interface]
+        Results[Results Display]
+    end
+    
+    subgraph "API Layer"
+        API[FastAPI Server]
+        CORS[CORS Middleware]
+    end
+    
+    subgraph "RAG Pipeline"
+        Query[User Query]
+        Embed[Query Embedding]
+        SearchDB[Semantic Search]
+        Retrieve[Retrieve Tickets]
+        Prompt[Build Prompt]
+        Generate[Generate Answer]
+    end
+    
+    subgraph "Data Layer"
+        Tickets[Support Tickets JSON]
+        ChromaDB[(ChromaDB Vector Store)]
+        Embeddings[Text Embeddings]
+    end
+    
+    subgraph "AI Services"
+        ST[Sentence Transformers]
+        Gemini[Google Gemini AI]
+    end
+    
+    UI --> Search
+    Search --> API
+    API --> Query
+    
+    Query --> Embed
+    Embed --> ST
+    ST --> Embeddings
+    Embeddings --> SearchDB
+    SearchDB --> ChromaDB
+    
+    ChromaDB --> Retrieve
+    Retrieve --> Prompt
+    Prompt --> Gemini
+    Gemini --> Generate
+    Generate --> API
+    
+    API --> CORS
+    CORS --> Results
+    Results --> UI
+    
+    Tickets --> Embeddings
+    
+    classDef frontend fill:#e1f5fe
+    classDef api fill:#f3e5f5
+    classDef rag fill:#e8f5e8
+    classDef data fill:#fff3e0
+    classDef ai fill:#fce4ec
+    
+    class UI,Search,Results frontend
+    class API,CORS api
+    class Query,Embed,SearchDB,Retrieve,Prompt,Generate rag
+    class Tickets,ChromaDB,Embeddings data
+    class ST,Gemini ai
+```
+
 ## Tech Stack
 
 **Backend:**
