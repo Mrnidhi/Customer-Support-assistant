@@ -185,4 +185,8 @@ GOOGLE_API_KEY=your_google_api_key_here
 
 MIT License
 
+---
+
+*Built with ❤️ by Mrnidhi*
+
 
