@@ -189,4 +189,6 @@ MIT License
 
 *Built with ❤️ by Mrnidhi*
 
+**Contributors**: Only Mrnidhi (Srinidhi Gowda) - srinidhi.connects@gmail.com
+
 
